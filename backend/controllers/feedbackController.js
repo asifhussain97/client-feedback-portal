@@ -26,7 +26,6 @@ exports.getUserFeedback = async (req, res) => {
       const feedbacks = await Feedback.find({ user: userId }).sort({ createdAt: -1 });
       res.json(feedbacks);
     } catch (error) {
-      console.error(error);
       res.status(500).json({ status:false,message: "Server Error" });
     }
 };
@@ -66,7 +65,6 @@ exports.submitAdminReply = async (req, res) => {
         const { text } = req.body;
 
         const feedback = await Feedback.findById(feedbackId);
-        console.log(req.params,req.body,feedback,"feedback");
         if (!feedback) {
         return res.status(404).json({ error: 'Feedback not found' });
         }

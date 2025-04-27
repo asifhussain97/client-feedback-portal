@@ -29,13 +29,11 @@ module.exports = async function generateAdminReply(feedbackText) {
     const data = await response.json();
 
     if (!data.choices || data.choices.length === 0) {
-      console.error("❌ No choices in Together.ai response");
       return "Thanks for your feedback! (AI reply not available)";
     }
 
     return data.choices[0].message.content;
   } catch (err) {
-    console.error("❌ Together API Error:", err.message);
     return "Thanks for your feedback! (AI reply failed)";
   }
 };
