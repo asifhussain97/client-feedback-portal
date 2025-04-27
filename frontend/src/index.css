@@ -1,0 +1,735 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
+
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #03a9f4;
+  transition: 0.5s;
+}
+
+h2 {
+  font-size: 25px;
+  color: #fff;
+}
+.container {
+  width: 900px;
+  height: 525px;
+  position: relative;
+  margin: 20px;
+}
+
+.leftbg {
+  position: absolute;
+  top: 45px;
+  height: 410px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.leftbg .box {
+  left: 0;
+  top: 0;
+  position: relative;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.btn {
+  padding: 10px 30px;
+  font-size: 16px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  color: #333;
+  font-weight: 500;
+}
+
+.form-cont {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0%;
+  right: 50%;
+  height: 100%;
+  width: 50%;
+  background-color: #fff;
+  transition: 0.5s ease-in-out;
+  overflow: hidden;
+  border-bottom-right-radius: 40px;
+  border-top-left-radius: 40px;
+}
+
+.form-cont.active {
+  left: 50%;
+  right: 0%;
+  top: 0px;
+  transition: 0.5s;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 40px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 40px;
+}
+
+.form-cont.active .signinForm {
+  left: -200%;
+}
+.form-cont.active .signupForm {
+  left: 0%;
+}
+.form-cont.active .signupForm button {
+  background-color: #f43648;
+}
+
+.App.active {
+  background-color: #f43648;
+}
+
+.form-cont .form {
+  position: absolute;
+  left: 0%;
+  top: 60px;
+  width: 100%;
+  height: 100%;
+  padding: 50px;
+  transition: all 0.5s ease-in-out;
+  overflow-y: auto;  /* Enable vertical scroll when content overflows */
+  max-height: calc(100% - 50px); /* Ensures form doesn't stretch beyond container */
+}
+
+.form-cont .signupForm {
+  top: 25px;
+  left: 200%;
+}
+
+.form-cont .form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form h2 {
+  color: #333;
+}
+
+.form input {
+  padding: 10px;
+}
+
+.form button {
+  padding: 10px 30px;
+  width: 38%;
+  padding: 10px 25px;
+  border: none;
+  background-color: #03a9f4;
+  border-radius: 3px;
+  font-size: 17px;
+  color: #fff;
+  cursor: pointer;
+}
+
+a {
+  color: #333;
+}
+
+@media screen and (max-width: 400px) {
+  .container {
+    top: -21px;
+    height: 471px;
+  }
+  .form-cont {
+    width: 100%;
+    border-radius: 0px;
+  }
+  .form button {
+    width: 58%;
+  }
+  .leftbg {
+    top: 154px;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .form-cont .form {
+    top: 40px;
+  }
+
+  .leftbg .box {
+    top: 13%;
+    width: 100%;
+    gap: 0.3rem;
+  }
+
+  .h2 {
+    font-size: 18px;
+  }
+
+  .btn {
+    padding: 6px 23px;
+    font-size: 12px;
+  }
+
+  .form-cont.active {
+    left: 0px;
+    top: 0px;
+    transition: 0.5s;
+    border-radius: 0px;
+  }
+  .form-cont.active .form {
+    top: -22px;
+  }
+  .h1 {
+    font-size: 19px;
+  }
+
+  .App.active {
+    overflow: hidden;
+  }
+
+  .App.active .leftbg .box {
+    top: 63%;
+  }
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+/* Navbar.css */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #9bfafa;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-top: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 20px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.logout-button {
+  padding: 8px 16px;
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+/* history */
+.feedback-history-container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #e3f2fd, #ffffff, #e8eaf6);
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  align-items: stretch; /* Ensures sidebar grows with content */
+}
+
+.feedback-history-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  width: 100%;
+  padding-right: 40px;
+}
+
+.feedback-sidebar {
+  width: 250px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-right: 20px;
+  border-right: 2px solid #000000;
+  padding-left: 40px;
+  background: #dcdbdb;
+}
+
+.feedback-content-wrapper {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  width: 100%;
+}
+
+.feedback-heading {
+  font-size: 28px;
+  color: #333;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.no-feedback-message {
+  text-align: center;
+  color: #888;
+  font-style: italic;
+  margin-top: 100px;
+}
+
+.feedback-headingside {
+  font-size: 25px;
+  color: #333;
+  font-weight: 700;
+  margin-bottom: -5px;
+}
+
+.sort-button {
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 5px 20px;
+}
+.sort-button:hover {
+  color: #1976d2;
+}
+
+/* Content Area Styles */
+.feedback-content {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.feedback-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.3s ease;
+}
+
+.feedback-card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.feedback-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.feedback-text {
+  font-size: 16px;
+  color: #444;
+  line-height: 1.6;
+}
+
+.feedback-image {
+  max-width: 250px;
+  margin-top: 15px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+}
+
+/* Admin Reply */
+.admin-reply {
+  background-color: #e0f7e9;
+  border-left: 4px solid #4caf50;
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 6px;
+  color: #2e7d32;
+  font-size: 15px;
+}
+
+/* No Reply Message */
+.no-reply {
+  font-style: italic;
+  font-size: 14px;
+  color: #999;
+  margin-top: 10px;
+}
+
+.feedback-card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.feedback-details {
+  flex: 1;
+}
+
+.feedback-image-wrapper {
+  flex-shrink: 0;
+}
+
+.feedback-image {
+  width: 200px; /* Or 250px, adjust as you like */
+  height: auto;
+  object-fit: cover;
+  border: 1px solid #eee;
+  border-radius: 8px;
+}
+
+
+/*page*/
+.feedback-form-container{
+  padding: 50px;
+}
+
+.feedback-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Textarea for feedback */
+.feedback-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #333;
+  resize: vertical;
+  min-height: 150px;
+}
+
+.feedback-form input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #333;
+  resize: vertical;
+}
+
+/* Rating section */
+.feedback-form .flex {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.feedback-form .flex button {
+  font-size: 24px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #ccc;
+  transition: color 0.2s;
+}
+
+.feedback-form .flex button:hover {
+  color: #ffb74d;
+}
+
+.feedback-form .flex button.text-yellow-500 {
+  color: #ffb74d;
+}
+
+/* File input styling */
+.feedback-form input[type="file"] {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+/* Submit button styling */
+.feedback-form button[type="submit"] {
+  background-color: #03a9f4;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.feedback-form button[type="submit"]:hover {
+  background-color: #0288d1;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 480px) {
+  .feedback-form {
+    padding: 20px;
+  }
+
+  .feedback-form textarea {
+    min-height: 120px;
+  }
+
+  .feedback-form button[type="submit"] {
+    padding: 10px;
+  }
+}
+
+
+/*admin*/
+.admin-dashboard {
+  display: flex;
+  align-items: stretch; 
+  flex-direction: row;
+  gap: 30px;
+  width: 100%;
+  min-height: 100vh;
+  max-height: 100%;
+  padding-right: 40px;
+}
+
+.admin-filters {
+  margin-bottom: 16px;
+}
+
+.admin-select {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-left: 5px;
+}
+
+.feedback-cardadmin {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+}
+
+.feedback-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.feedback-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.feedback-right {
+  flex-shrink: 0;
+}
+
+.feedback-imageadmin {
+  width: 200px;
+  height: auto;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.feedback-user {
+  font-weight: 500;
+}
+
+.feedback-rating {
+  font-size: 14px;
+  color: gray;
+}
+
+.feedback-headeradmin {
+  display: flex;
+  flex-direction: column; /* add this */
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.feedback-texttitle {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #000000;
+  line-height: 1.6;
+}
+
+.feedback-textreplay {
+  font-size: 18px;
+  color: #000000;
+  line-height: 1.6;
+}
+
+.feedback-image {
+  width: 160px;
+  margin-top: 8px;
+  border-radius: 6px;
+}
+
+.feedback-bottom {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.feedback-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.feedback-textarea {
+  width: 50%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-top: 12px;
+}
+
+.submit-reply-btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 8px 16px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: fit-content; 
+}
+.submit-reply-btn:hover {
+  background-color: #45a049;
+}
+.delete-reply-btn {
+  background-color: #c52b2b;
+  color: white;
+  padding: 8px 16px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: fit-content; 
+}
+.delete-reply-btn:hover {
+  background-color: #b02d2d;
+}
+.suggest-reply-btn {
+  background-color: #1976d2;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+.suggest-reply-btn:hover {
+  background-color: #1565c0;
+}
+
+.admin-content {
+  padding-top: 40px;
+  display: flex;
+  gap: 24px;
+  width: 100%;
+  flex: 1;    
+}
+
+.feedback-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-heading {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #000000;
+  text-align: center;
+}
+
+/* Sidebar filters */
+.admin-filters {
+  flex: 0 0 250px; /* Sidebar width */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.filter-section {
+  padding-top: 5px;
+  padding-left: 5px;
+}
+
+.sort-buttonadmin {
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.sort-buttonadmin:hover {
+  color: #1976d2;
+}
+
+.feedback-content-wrapperadmin {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  width: 100%;
+  display: flex; /* Add this */
+  flex-direction: column; /* Add this */
+  gap: 30px; /* Increase gap if you want bigger space */
+}
+/* Feedback list */
+.buttons-container {
+  display: flex;
+  gap: 10px; /* Adds space between the buttons */
+  justify-content: flex-start; /* Aligns buttons to the left */
+  margin-top: 10px; /* Optional: Adds some spacing above the buttons */
+}
